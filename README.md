@@ -16,6 +16,7 @@
   При больших размерах окна даже текущий алгоритм отработает эффективно
 
 Запускать можно так:
+
  ```cd ~/abbyy_cv_course/ && mkdir  -p build && cd build/ && cmake .. && make && cd ../```
- 
+
  ```./build/Sort test.bmp best 20```
