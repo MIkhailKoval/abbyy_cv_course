@@ -102,7 +102,7 @@ double calculateAngle(std::vector<std::vector<std::vector<long long>>>& res) {
     std::vector<std::vector<long long>> vars(size, std::vector<long long>(2, 0));
     for (int is_reversed = 0; is_reversed < axis_size; is_reversed++) {
         for (int i = 0; i < size; i++) {
-            auto n = size;
+            auto n = res[is_reversed][i].size();
             long long sum{0};
             for (size_t j = 0; j < res[is_reversed][i].size(); j++) {
                 sum += res[is_reversed][i][j];
