@@ -40,7 +40,7 @@ std::vector<std::vector<long long>> calculateFHTrec(
     std::vector<std::vector<long long>> res(image.GetCols(), std::vector<long long>(xmax - xmin, 0));
     if (xmax - xmin == 1) {
         for (int x = 0; x < image.GetCols(); x++) {
-            res[x][0] = image.GetCell(x, xmin);
+            res[x][0] = image.GetCell(xmin, x);
         }
         return res;
     }
@@ -90,7 +90,7 @@ std::vector<std::vector<long long>> calculateFHT(ImageImpl& image, bool is_rever
             res[i][j] = value;
         }
     }
-    //cv::imwrite("result/" + name + "_" + "haff" + (is_reversed? "_reversed": "") +".jpg", out);
+    cv::imwrite("result/" + name + "_" + "haff" + (is_reversed? "_reversed": "") +".jpg", out);
     return res;
 }
 
