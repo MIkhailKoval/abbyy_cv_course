@@ -90,7 +90,7 @@ std::vector<std::vector<long long>> calculateFHT(ImageImpl& image, bool is_rever
             res[i][j] = value;
         }
     }
-    cv::imwrite("result/" + name + "_" + "haff" + (is_reversed? "_reversed": "") +".jpg", out);
+    // cv::imwrite("result/" + name + "_" + "haff" + (is_reversed? "_reversed": "") +".jpg", out);
     return res;
 }
 
@@ -137,11 +137,11 @@ double calculateAngle(std::vector<std::vector<std::vector<long long>>>& res) {
 
 void calculateSobel(ImageImpl& image, ImageImpl& out) {
     cv::Mat src;
-    cv::GaussianBlur(image.GetImage(), src, cv::Size(25, 25), 0, 0, cv::BORDER_DEFAULT);
+    cv::GaussianBlur(image.GetImage(), src, cv::Size(3, 3), 0, 0, cv::BORDER_DEFAULT);
     cv::Mat grad_x, grad_y;
     cv::Mat abs_grad_x, abs_grad_y;
-    Sobel(src, grad_x, CV_16S, 1, 0, /*ksize*/ 1, /*scale*/ 1, /*delta*/ 0, cv::BORDER_DEFAULT);
-    Sobel(src, grad_y, CV_16S, 0, 1, /*ksize*/ 1, /*scale*/ 1, /*delta*/ 0, cv::BORDER_DEFAULT);
+    Sobel(src, grad_x, CV_16S, 1, 0);
+    Sobel(src, grad_y, CV_16S, 0, 1);
     convertScaleAbs(grad_x, abs_grad_x);
     convertScaleAbs(grad_y, abs_grad_y);
     addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, out.GetImage());
