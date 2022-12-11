@@ -96,7 +96,7 @@ std::vector<std::vector<long long>> calculateFHT(ImageImpl& image, bool is_rever
 
 double calculateAngle(std::vector<std::vector<std::vector<long long>>>& res) {
     int size = res[0].size();
-    int axis_size = 1;
+    int axis_size = 2;
     std::cout << "here" << std::endl;
      // get rid of denominator, because it is equal for all elements
     std::vector<std::vector<long long>> vars(size, std::vector<long long>(2, 0));
@@ -113,8 +113,8 @@ double calculateAngle(std::vector<std::vector<std::vector<long long>>>& res) {
         }
     }
     long long max_var{0}, argmx = 0, sign = 1;
-    for (size_t i = 0; i < vars.size(); i++) {
-        for (int is_reversed = 0; is_reversed < axis_size; is_reversed++) {
+    for (int is_reversed = 0; is_reversed < axis_size; is_reversed++) {
+        for (size_t i = 0; i < vars.size(); i++) {
             max_var = std::max(max_var, vars[i][is_reversed]);
         } 
     }
